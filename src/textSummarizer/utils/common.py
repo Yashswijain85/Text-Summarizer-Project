@@ -1,13 +1,13 @@
 import os
 from box.exceptions import BoxValueError
 import yaml
-from ensure import ensure_annotations
+from beartype import beartype
 from textSummarizer.logging import logger
 from box import ConfigBox
 from pathlib import Path
 from typing import Any
 
-@ensure_annotations
+@beartype
 def read_yaml(path_to_yaml: Path) -> ConfigBox:
     """reads yaml file and returns
 
@@ -31,7 +31,7 @@ def read_yaml(path_to_yaml: Path) -> ConfigBox:
     except Exception as e:
         raise e
 
-@ensure_annotations
+@beartype
 def create_directories(path_to_directories: list, verbose=True):
     """create list of directories
 
@@ -44,8 +44,7 @@ def create_directories(path_to_directories: list, verbose=True):
         if verbose:
             logger.info(f"created directory at: {path}")
 
-
-@ensure_annotations
+@beartype
 def get_size(path: Path) -> str:
     """get size in KB
 
